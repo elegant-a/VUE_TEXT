@@ -1,0 +1,21 @@
+data(){
+
+hobby:['抽烟','喝酒','烫头'],
+friends:[
+   {name:'jerry',age:35},
+   {name:'tony',age:36}
+]
+}
+
+
+数组更新检测
+#变更方法
+Vue将被侦听的数组的变更方法进行了包裹,所以它们也将会触发视图更新.
+这些被包裹的方法包括:
+push()
+pop()
+shift()
+unshift()
+splice()
+sort()
+reverse()

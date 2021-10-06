@@ -1,0 +1,91 @@
+//什么事数据劫持
+通过上面对Object.defineProperty的介绍,我们不难发现,当我们访问或设置对象的属性的时候,都会触发对应的函数,然后再这个函数里
+返回设置的属性值.既然这样,我们当然可以在触发函数的时候,动一些手脚做点我们自己想做的事情,这就是劫持操作,在Vue中其实就是
+通过Object.defineProperty来劫持对象属性的setter和getter操作,并"种下"一个监听器,当数据发生变化的时候发出通知
+
+<!-- 准备好一个容器 -->
+<div id="root">
+  <form @submit.prevent>
+     <label for="demo">账号</label>
+     <input type="text" id="demo"/> 
+
+    密码: <input type="password"> <br/><br/>
+
+    性别:
+    男<input type="radio" name="sex">
+    女<input type="radio" name="sex"> <br/>
+    爱好:
+    学习<input type="checkbox" value="study">
+    打游戏<input type="checkbox" value="game">
+    吃饭<input type="checkbox" value="eat">
+    <br/><br/>
+     所属校区
+     <select>
+        <option value="">请选择校区</option>
+        <option value="biejing">北京</option>
+        <option value="shanghai">上海</option>
+        <option value="shenzhen">深圳</option>
+        <option value="wuhan">武汉</option>
+     </select>
+<textarea><textarea><br/><br/>
+<input type="checkbox">阅读并接受<a href="http://www.atguigu.com">用户协议</a>
+ <button>提交</button>
+
+
+
+
+
+
+Vue.createApp({
+ el:'#root',
+ data:{
+     account:'',
+     password:'',
+     sex:'femal'
+
+}
+})
+    
+   
+
+  </form>
+</div>
+
+
+model修饰符
+lazy,trim,number
+
+
+
+收集表单数据:
+     若:<input type="text"/>,则v-model收集的是value值,用户输入的几乎四valuez值
+     若:<input type="radio"/>,则v-model收集的是value值,且要给标签配置value值
+     若:<input type="checkbox"/>
+         1.没有配置input的value属性,那么收集的就是checked(勾选or不勾选,是布尔值)
+         2.配置input的value属性:
+           (1)v-model的初始值是非数组,那么收集的就是checked(勾选or不勾选,是布尔值)
+
+
+data:{
+  userInfo:{
+   account:'',
+   password:'',
+   age:18,
+   sex:'female',
+   hobby:[],
+   city:'beijing',
+   other:'',
+   agree:''
+}
+},
+
+
+methods:{
+   demo(){
+  console.log(JSON.stringify(this.userInfo))
+
+}
+
+}
+
+

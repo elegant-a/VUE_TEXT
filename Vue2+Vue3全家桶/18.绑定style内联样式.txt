@@ -1,0 +1,26 @@
+//绑定class样式--对象写法,适用于:要绑定的样式个数确定,名字也确定,但要动态决定用不用
+
+<div class="classObj">{{name}}</div>
+<div class="classArr">{{name}}</div>
+<div class="basic" :class="classObj">{{name}}</div>
+
+
+
+:style="styleObj"
+
+styleObj:{
+ fontSize:'40px',
+ color:'red',
+}
+styObj2:{
+  bakgroundColor:'orange'
+},
+styleArr:[
+{
+   fontSize:'40px',
+   color:'blue',
+}
+],
+
+
+methods:{}

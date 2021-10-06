@@ -1,0 +1,46 @@
+数据代理
+data上面有的数据
+vm上面也有一份
+1.加工data
+2vm._data
+
+
+数据代理和数据劫持
+
+vm._data
+
+7.模拟数据监测
+let data = {
+ name:'尚硅谷'
+
+}
+
+
+Maximum call stack size
+超出回到栈大小(内存溢出)
+
+//创建一个监视的实例对象,用于监视data中属性的变化
+const obs = new Observer(data)
+
+function Observer(obj){
+//汇总对象中所有的属性形成一个数组
+const keys = Object.keys(obj)
+//遍历
+keys.forEach(k)=>{
+Object.defineProperty(this,k,{
+ get(){
+   return obj[k]
+},
+ set(val){
+ obj[k] = val
+}
+})
+}
+}
+
+
+当你改data里面的数据,重新解析模板,生成虚拟dom
+
+
+
+

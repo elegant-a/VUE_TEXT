@@ -1,0 +1,35 @@
+data与el的两种写法
+1.el有两种写法
+   1.el有两种写法
+       (1).new Vue时候配置el属性el:'#root'
+       (2).先创建Vue实例,随后再通过createApp.$mount('#root')指定el的值
+   2.data有两种写法
+       (1).对象式
+       (2).函数式
+      组件中调用必须要通过函数式data的形式
+      
+
+
+
+const v = Vue.createApp({
+//el:'#root'写实例的时候,直接在实例中写就行
+})
+
+v.mount('#app')
+
+
+//data的两种写法
+data:{
+ name:'尚硅谷'
+}
+//data的第二种写法:函数式
+data:function(){
+ return {
+  name:"尚硅谷"
+}
+}
+
+//组件时必须使用函数式
+data函数this式Vue实例对象
+
+

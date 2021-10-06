@@ -1,0 +1,15 @@
+Vue虽然没有完全遵循MVVM模型 但是Vue的设计也受到了它的启发.因此在文档中经常
+会使用vm这个变量名表示Vue实例.
+
+
+1.M 模型(Model):对应data中的数据
+2.V:视图(View):模板 DOM层
+3.VM:视图模型(ViewModel):Vue实例对象  Data Bindings(数据绑定) DOM Listener(数据监听)
+1.data中所有的属性,最后都出现在了vm身上.
+2.vm身上所有的属性 及 Vue原型上所有的属性,在Vue模板中都可以直接使用.
+
+const vm = Vue.createApp({
+
+
+
+})

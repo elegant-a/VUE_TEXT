@@ -1,0 +1,46 @@
+//1.如何父子组件传值,通过参数的形式
+//2.静态传值,和动态传值
+//3.子组件接受父组件传递过来的值得时候,我们还可以进行一些校验,校验使用对象形式,
+//可以进行过type,defalut,validate的校验
+
+
+动态传参
+const app = Vue.createApp({
+ data(){
+    return { num:123 }
+},
+template:`<div><test :content="num" /></div>`
+
+})
+
+
+父组件在组件上使用:content="num"
+子组件中使用
+props:{
+ content:Function,
+}
+template:`<div>{{typeof content}}</div>`
+
+
+父组件给子组件传值,在父组件上定义要传递的内容,在子组件上使用props接受
+props可以由两种形式
+一种是数组['xx','xxx','xxx'],另外一种是对象
+props:{
+ content:string,
+}
+
+props:{
+content:{
+ type:Number,
+
+ validator:function(value){
+  return value < 1000;
+}
+ default:()=>{
+  return 456;
+}
+}
+
+//还可以等价一个函数
+
+}

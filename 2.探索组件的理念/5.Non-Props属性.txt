@@ -1,0 +1,46 @@
+//父组件给子组件传递内容的时候,子组件不通过props来接收
+如果子组件是单层标签,父组件上的属性,会默认添加到最外层的div标签上
+
+
+如果不通过props来接收
+我们可以使用v-bind:"$attrs"接受父组件上全部的属性
+<div v-bind="$attrs">Counter</div>
+<div v-bind :msg="$attrs.msg">Counter</div>
+<div1 :msg1="$attrs.msg1">Counter</div>
+
+
+mounted,当组件渲染完成后,
+mounted(){
+ console.log(this.$attrs.msg)
+}
+
+
+<counter msg="hello">
+
+
+const app = Vue.createApp({
+
+template:`
+<div>
+    <counter msg>
+</div>
+
+`
+})
+
+//父组件给子组件传递内容的时候,子组件不通过props来接收
+如果子组件是单层标签,父组件上的属性,会默认添加到最外层的div标签上
+
+
+如果不通过props来接收
+我们可以使用v-bind:"$attrs"接受父组件上全部的属性
+<div v-bind="$attrs">Counter</div>
+<div v-bind :msg="$attrs.msg">Counter</div>
+<div1 :msg1="$attrs.msg1">Counter</div>
+
+
+mounted,当组件渲染完成后,
+mounted(){
+ console.log(this.$attrs.msg)
+}
+

@@ -1,0 +1,48 @@
+组件是页面上的一部分
+const app = Vue.createApp({
+compoents:{'dell':counter}
+template:`<div><counter /></div>`
+})
+
+
+template:`<div @click="count += 1">{{count}}</div>`
+组件也具有复用性,是可以被复用的
+//定义局部组件一般开头都使用大写
+
+
+const conter = {
+
+data (){
+
+return {
+ count:1
+}
+}
+
+app.component('counter',{
+data(){
+  return {
+   count:1
+}
+},
+template:`<div>{{}}</div>`
+
+
+})
+
+
+局部组件
+const conut = {
+ data(){
+return {
+count:1;
+}
+
+};
+
+//局部组件使用时,要做一个名字和组件间的映射对象,你不写映射Vue底层也会帮你做映射
+
+
+}
+
+

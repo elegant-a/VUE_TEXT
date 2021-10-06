@@ -1,0 +1,16 @@
+//刚开始用户里面没有性别
+
+Vue.set(this.student,'sex','男')
+
+Vue.set(vm._data,'leader','一个帅气的男老师')
+
+
+在调用Vue.set()时,不能定义在set上面 
+Vue.set(target,propertyName/index,value)
+
+.参数
+  {Object | Array} target
+  {string | number} propretyName/index
+  {any} value
+
+返回值:设置的值

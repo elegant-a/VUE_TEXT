@@ -1,0 +1,21 @@
+教程和API是所有导航里面最重要的两个
+API Vue字典编写Vue遇到不会的就去找API
+
+风格指南,可以写的更加优雅
+
+cookbook Vue教你代码的技巧
+Vue.prototype.$appName = 'My App'
+
+工具和核心插件
+在公司里面我们一般就用脚手架
+Vue CLi
+(令人惊奇的,了不起的)
+Awesome Vue
+
+Vue发展到现在有很强大的生态
+
+我们一般就用第三方库区生成报表
+charts(比如说报表)
+官方整理的比较好用的包
+
+element-ui

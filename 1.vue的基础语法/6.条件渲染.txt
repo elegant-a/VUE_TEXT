@@ -1,0 +1,7 @@
+1.v-if="xx"
+v-if控制dom元素的展示与否是通过销毁dom
+2.v-show="xx"
+如果需要频繁的展示与隐藏需要通过
+v-show来进行展示
+
+<div v-if="show">Hello World</div>

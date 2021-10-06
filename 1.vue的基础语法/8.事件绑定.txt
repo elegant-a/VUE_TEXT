@@ -1,0 +1,59 @@
+data(){
+return {
+counter:0
+}
+},
+
+methods:{
+handleBtnClick(event){
+this.counter += 1;
+
+}
+}
+
+//在vue里面,方法想要获取原生的事件对象, event就是我们要获取的原生对象
+如果我们要传递参数并且使用事件对象,我们要使用$event这样提供的一个方法
+@click="handleBtnClick(2,$event)"
+
+当点击事件发生时,我们可能要执行多个函数
+
+Vue一个事件绑定多个方法,
+<div @click="handleBtnClick(),handleBtnClick1()">button</div>
+
+
+Vue事件绑定的修饰符
+在事件后面,添加一个.stop
+//事件修饰符,stop
+<button @click.stop="handleBtnClick">button</button>
+//只有触发的事件是自己的时候,才会触发,如果是字标签触发的dom事件是不会触发的
+<div @click.self="handleBtnClick">button</div>
+//把冒泡变为捕获阶段,由内到外,变成由外到内
+<div @click.capture="handleBtnClick">button</div>
+
+@scroll.passiv
+@click.once
+
+按键修饰符
+@keydown.enter="handleKeyDown"
+enter,tab,delete,backspace
+//鼠标修饰符
+left,right,middle
+//不管怎么点,都会打印click
+@click
+精确修饰符:exat
+
+@click.ctrl.exact="handleClick"
+//只有当你按住了ctrl键,再点击的时候,才执行handle方法
+
+
+1.如何定义事件,v-on:click="xx",简写方法为@click="xx"
+2.如何使用原生的event,在menthods里面定义的方法形参中传入event，就可以使用事件对象了handleClcik(event){console.log(event)}
+3.如果调用时传递多个参数,可以使用@click="handleBtnClick(num,$event)"
+4.一个事件调用多个函数@click="handleBtnClick(),handleBtnClick2()"
+5.修饰符
+(1)事件修饰符:stop,capture,self,once,passive
+    按键修饰符:enter,tab,delete,esc,up,down,left,right
+    鼠标修饰符:left,right,middle
+    精确修饰符:exact
+ 
+

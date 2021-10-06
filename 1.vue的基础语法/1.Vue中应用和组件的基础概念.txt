@@ -1,0 +1,40 @@
+
+<div id="root"></div>
+
+
+//createApp,表示创建一个Vue应用,存储到App变量里面
+//传入的参数表示,这个应用最外层的组件,应该如何展示
+//mvvm设计模式,m -> model数据 , v ->view视图  ->viewModel 视图数据连接层
+const app = Vue.createApp({
+data(){
+
+return {
+ message:'hello world'
+}
+},
+template:"<div>{{message}}</div>"
+
+
+})
+//Vm代表的就是vue应用的根组件
+const vm = app.mount('#root');
+
+data(){
+
+return{
+message:'hello world'
+}
+}
+data里面的返回值就是数据
+要怎么展示数据的dom就是v层
+dom和数据的连接层就是视图数据连接层
+Vue的组件帮我们做的
+
+}
+
+/调用根节点的内容要在根节点的前面加一个$这样一个字符,我们就可以获取到数据里面的内容了
+
+
+main.js是入口文件
+//这里的挂载是直接挂载到index.html文件上面id="#app"上面
+createApp(App).use(store).use(router).mount('#app')

@@ -1,0 +1,43 @@
+const vm = createApp({
+data(){
+firstName:'张',
+lastName:'三',
+},
+//完整写法
+wath:{
+    firstName:{
+    immediate:false
+    deep:true
+    handler(){
+}
+}
+}
+
+})
+
+const vm = createApp({
+ data(){
+ firstName:'张',
+ lastName:'三',
+ fullName:'张-三'
+
+}
+
+
+})
+
+
+watch:{
+  firstName(cur,pre){
+  this.fullName = cur + '-' + this.lastName
+}
+
+lastName(cur,pre){
+  this.fullName = this.lastName + '-' + cur;
+}
+}
+
+
+watch能实现,计算属性也能实现,我们肯定要用computed
+但是computed不能使用异步,所以只好用watch
+s

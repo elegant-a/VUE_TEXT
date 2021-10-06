@@ -1,0 +1,33 @@
+需求1:定义一个big指令,和v-text功能类似,但会把绑定的数值放大10倍.
+需求2:定义一个v-fbind指令,和v-bind功能类似,但可以让其绑定的input元素默认获取焦点
+
+<div id="root">
+  <h2>当前的n值是:<span v-text="n"></span></h2>
+  <h2>放大10倍后的n值是:<span v-big="n"></span></h2>
+  <button @click="n++">点我n+1</button>
+</div>
+
+
+createApp({
+ el:'#root',
+ data:{
+ n:1
+},
+ directives:{
+  big(element,binding){
+    console.log('big');
+    element.innerText = binding.value * 10
+}
+}
+})
+
+
+如果要使用自定义指令,
+directives:{
+ big(element,binding){
+  console.log('big');
+  element.innerText = binding.value * 10
+
+}
+
+}

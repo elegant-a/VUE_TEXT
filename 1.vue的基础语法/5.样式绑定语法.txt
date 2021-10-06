@@ -1,0 +1,46 @@
+1.可以使用字符串
+2.可以使用对象
+3.可以使用数组
+
+data(){
+
+
+return {
+ classString:'red',
+ classObject:{red:true,green:true},
+ classArray:["red","green",{brown:true}]
+}
+}
+
+
+<div :class="classString">
+<demo class="green"/>
+</div>
+
+
+
+app.component('demo',{
+ template:`<div:class="$attr.class">single</div>`
+})
+
+//子组件的class值等于父组件上面的class的是属性值
+//可以直接写在组件的上面
+
+Vue里面如何使用样式,分为class类名和style样式两类
+在data里面返回定义好的变量使用数组记得加字符串
+
+data(){
+  return{
+  classString:'red',
+  classObject:{red:false,green:true},
+  classArray:['red','green',{brown:false}],
+  styleString:'color:yellow',
+ styleObject:{
+ color:'orange',
+ background:'yellow'
+
+}
+}
+
+
+}

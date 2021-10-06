@@ -1,0 +1,27 @@
+<!-- 绑定class样式--字符串写法--  适用于:样式的类名不确定,需要动态指定>
+<div class="basic" :class="a" @click="changeMood">{{name}}</div>
+
+Vue.createApp({
+
+data(){
+ name:'尚硅谷',
+ mood:'normal'
+ data:{
+ classArr:['atguigu1','atguigu2','atguigu3'],
+ classObj:{
+ atguigu1:false,
+ atguigu2:false
+}
+
+}
+},
+methods:{
+ changeMood(){
+    const arr = ['happy','sad','normal']
+   //取0-1随机数
+    const index = Math.floor((Math.random()*3)向下取整(就可以取到0-2整数的随机)
+    this.mood = arr[index]
+}
+}
+})
+

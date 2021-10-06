@@ -1,0 +1,23 @@
+插值表达式{{变量}}
+变量指向的是data里面的内容，
+
+在v-html上使用这个指令就不把div标签展示出来了
+<div v-html="message">hello world</div>
+我希望div 标签上的属性title和message做绑定,这么写的时候,title就是
+v-bind:(dom的某个属性想要用某个变量时,可以用v-bind)例如<div :title="message"></div>
+
+v-once:表达式里面的变量只会更新一次,后面再更新的时候,是不会更新的
+
+v-on:事件的绑定 v-on:"click"
+dom元素的属性值和属性名都可以用变量来表示
+@[event]="handleClick"
+
+
+@click.prevent="handleClick"
+//这样的修饰符,阻止事件的默认行为
+1.插值表达式{{}}
+2.v-html通过html的方式,就不会对html的方式做转译
+3.v-bind:当dom元素的某个属性值想绑定data中的变量时 属性值要加v-bind 简写方法是:title
+4.v-once:插值表达式里面的内容只更新一次
+5.v-on:事件的绑定 v-on:click="handleClick" 绑定的事件一定要写进methods 简写方法是@click="handleClick"
+

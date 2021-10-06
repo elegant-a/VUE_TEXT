@@ -1,0 +1,53 @@
+
+{{message}}
+<input v-module="message"/>
+<textarea v-module="message" />
+
+//message里面可以放一个数组,当与input复选框丛双向绑定的时候,选中时,会往数组里面添加相应的内容
+<input type="checkbox" v-module="message" value="jack"/>
+<input type="checkbox" v-module="message" value="dell"/>
+<input type="checkbox" v-module="message" value="lee"/>
+
+
+//<select v-module="message">
+<option disabled value="">请选择内容</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+</select>
+
+select用双向绑定要把v-module写到select上面
+如果做多选的话,要把v-module绑定的变量变为一个数组
+
+:value="item.value"
+[{text:'A',value:{value:'A'},
+ {text:'B',value:{value:'B'},
+ {text:'C',value:{value:'C'}}
+}
+
+}]
+
+
+data(){
+
+return{
+ message:world,
+}
+},
+
+template:`<div>
+{{message}}
+//v-module设置的值就是value的值
+<input type="checkbox" v-module="message" />
+`
+
+<div>
+   {{message}}
+   //将value的值true,false和 true-value和false-value做替换,将原来true和false换成其他值
+   <input type="checkbox" v-module="message" true-value="hello" false-value="world">
+
+
+//修饰符 lazy(失去焦点后再改变数据),number(将数据类型变为数字类型),trim(去除字符串前后的空格)
+
+
+v-module一般应用于表单元素

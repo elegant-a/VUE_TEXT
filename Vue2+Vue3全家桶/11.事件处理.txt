@@ -1,0 +1,28 @@
+<button v-on:click="showInfo">点我提示信息</button>
+
+
+methods:{
+ showInfo(event){
+ event.target.value
+ //console.log(this) //此处的this是vm
+ console.log(this);
+//里面不能使用箭头函数这种形式来使用
+
+}
+
+
+
+}
+
+<button @click="showInfo2($event,66)">点我提示信息</button >
+
+
+
+
+methods:{
+ showInfo2(event,num);
+}
+
+
+只有配置在data里面的东西才会做数据劫持和数据代理
+

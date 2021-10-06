@@ -1,0 +1,125 @@
+<div>
+         <ul>
+          <li v-for="(p,index) of filPerons" :key="index">
+        </ul>
+</div>
+
+
+
+
+Vue.createApp({
+data:{
+persons:[
+{id:'001',name:'马冬梅',age:19,sex:'女'},
+{id:'001',name:'周冬雨',age:20,sex:'女'},
+{id:'001',name:'周杰伦',age:21,sex:'男'},
+{id:'001',name:'温兆伦',age:22,sex:'男'},
+]
+}
+})
+
+//收集用户输入的数据
+当用户输入的内容发生了改变
+
+watch:{
+    keyword(val){
+       this.persons = this.persons.filter((p)=>{
+            return p.name.indexOf(val) !== -1;
+})
+}
+}
+
+
+一个字符串indexOf一个空字符串是0不是-1
+'abcde'.indexOf('')
+
+
+
+//用计算属性实现
+computed:{
+  filPerson(){
+    return this.persons.filter((p)=>{ 
+      return p.name.indexOf(this.keyWord) !== -1
+})
+}
+
+
+//模糊搜索,输入任何一个字就可以获得用户输入的数据
+1.拿到用户的输入
+keyWord:'';
+
+<input type="text" placeholder="请输入名字" v-model="keyWord">
+
+
+
+//从而达到模糊搜索的这么一个效果
+//监视器写法
+<template>
+  <div id="root">
+     <h2>人员列表</h2>
+     <input type="text" placeholder="请输入名字" v-model="keyWord">
+      <ul>
+         <li v-for="(p,index) of persons" :key="index">
+           {{p.name}}-{{p.age}}-{{p.sex}}
+         </li>
+       </ul> 
+   </div>
+</template>
+
+
+<script type="text/javascript">
+Vue.createApp({
+ el:'#root',
+  data(){
+  keyWord;'',
+  persons:[
+{id:'001',name:'马冬梅',age:19,sex:'女'},
+{id:'001',name:'周冬雨',age:20,sex:'女'},
+{id:'001',name:'周杰伦',age:21,sex:'男'},
+{id:'001',name:'温兆伦',age:22,sex:'男'},
+],
+filPerson:[]
+},
+
+watch:{
+    keyWord:{
+    immediate:true,
+    handler(curVal){
+    this.filPerson = this.person.filter((p)=>{
+         return p.name.indexOf(val) !== -1
+})
+}
+}
+}
+})
+
+//计算属性写法
+
+Vue.createApp({
+ el:'#root',
+  data(){
+  keyWord;'',
+  persons:[
+{id:'001',name:'马冬梅',age:19,sex:'女'},
+{id:'001',name:'周冬雨',age:20,sex:'女'},
+{id:'001',name:'周杰伦',age:21,sex:'男'},
+{id:'001',name:'温兆伦',age:22,sex:'男'},
+],
+filPerson:[]
+},
+
+computed:{
+  filPerson(){
+   return this.person.filter((p)=>{
+
+      return p.name.indexOf(this.keyWord) !== -1;
+})
+}
+}
+})
+
+
+
+
+
+</script>

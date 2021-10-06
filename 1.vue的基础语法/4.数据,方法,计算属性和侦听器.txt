@@ -1,0 +1,51 @@
+//data & methods & computed & watcher
+1.data(data是一个函数,函数的返回值就是我们要用到的变量)
+2.methods(method是一个对象,里面是我们定义方法的区域.xxx(){})
+3.computed(计算属性,是一个对象,里面的方法会根据自己的依赖发生变化而发生改变)
+4.watchr(侦听器也是一个对象,侦听变量发生变化,做做出相应的变化,接收的大多也是函数,{price(current,next){}},如果侦听器和计算属性都可以使用的话,我们建议使用计算属性)
+
+
+data(){
+return{
+ message:"hello world"
+}
+},
+1.data里面的返回的变量内容,template里面才可以使用
+
+methods:{
+  handleClick(){
+    console.log('click',this.message)
+}
+}
+2.methods里面定义函数,不要使用箭头函数的形式,要使用小括号花括号的形式
+在methods里面定义方法,除了在定义click时可以使用这样的方法,还可以在插值表达式里面去用
+{{parseInt(count)*parseInt(price)}}
+
+3.计算属性computed
+//当计算属性依赖的内容发生变更时m才会重新执行计算
+computed:{
+ total(){
+  return this.count * this.price
+}
+}
+
+在插值表达式中直接使用不用加小括号{{total}}
+
+只有更改count或者price的时候,才会发生改变
+计算属性computed和methods对象里面都是定义方法的,计算属性会有缓存的方式,所以用计算属性computed比较好
+
+
+4.侦听cout和price变量
+//遇到异步的情况,一般可以使用watch就可以
+//price可以侦听变量的一些的异步改变,做一些异步的操作就可以	
+侦听器watch：{
+//price发生变化时,函数会执行
+price(current,prev){
+  this.newTotal = current * this.count;
+
+}
+}
+
+
+
+

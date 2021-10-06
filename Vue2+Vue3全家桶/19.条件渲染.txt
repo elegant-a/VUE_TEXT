@@ -1,0 +1,23 @@
+1.9条件渲染
+
+<div id="root">
+<h2 v-show="false">欢迎来到{{name}}</h2>
+</div>
+
+<!-- 使用v-show做条件渲染>
+
+<div v-if="n === 1">Angular</div>
+<div v-if="n === 2">React</div>
+
+<!-- v-else和v-else-if>
+<div v-if="n === 1">Angular</div>
+<div v-else-if="n === 2">React</div>
+<div v-else-if="n===3">Vue</div>
+<div v-else>哈哈</div>
+
+<!-- v-if与template的配合使用-->
+<template v-show="n === 1">
+  <h2>你好</h2>
+  <h2>尚硅谷</h2>
+  <h2>北京</h2>
+</template>

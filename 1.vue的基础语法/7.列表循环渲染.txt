@@ -1,0 +1,52 @@
+data(){
+ return {
+  listArray:['dell','lee','teacher'],
+  listObject:{
+   firstName:'dell',
+   lastName:'lee',
+   job:'teacher'
+}
+
+}
+
+}
+
+//循环数组
+<div>
+       <div v-for="(item,index) in listArray">
+          {{item}} -- {{index}}
+       </div>
+</div>
+
+//循环对象,循环对象可以直接循环出value值
+<div>
+       <div v-for="(value,key,index) in listObject" :key="index">
+          {{item}} -- {{key}}
+       </div>
+</div>
+
+
+全部重新渲染会浪费性能
+为了让Vue的效率更高,我们要给循环的每一项增加一项key值
+使用循环时,尽量的使用的唯一的key值
+
+Vue中的this指向的是当前组件的实例
+
+
+数组变化,页面跟着变得方式,
+1.可以使用常用的API
+2.还可以直接替换掉数组
+3.直接更新数组的内容
+//this.listArray[1] = 'hello'
+
+//直接添加对象的内容,也可以自动展示出来
+this.listObject[1] = 'nihaoa'
+this.listObject.sex = 'male'
+
+既做循环,又做判断,循环的优先级要高于判断的优先级
+//如果只想有一个div可以使用一个template占位符来替代div中的dom元素
+
+列表循环
+1.在dom元素中使用v-for="(xx,index) in xxlist" :key="index"
+2.v-for的优先级要高于v-if的优先级
+3.template是一个占位符,如要修改dom的时候,可以考虑使用
