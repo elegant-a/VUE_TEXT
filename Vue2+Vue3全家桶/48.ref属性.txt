@@ -1,0 +1,58 @@
+ref属性
+1.被用来给元素或子组件注册引用信息(id的替代者)
+2.应用在html标签上获取的是真实DOM元素,应用在组件上是组件实例对象(vc)
+3.使用方式:
+   打标识:<h1 ref='xxx'>......</h1>或<School ref="xxx"></school>
+   获取:this.$refs.xxx
+
+
+
+<h2 ref="title"></h2>
+
+//引入Vue
+import Vue from 'vue'
+//引入App
+import App from './App.vue'
+//关闭Vue的生产提示
+//引入school组件
+import School from './components/School'
+
+//创建vm
+    new Vue({
+     el:'#app',
+     render:h => h(App)
+})
+
+
+<template>
+export default{
+name :'School',
+data(){
+
+return{
+ name:'尚硅谷'
+ address:'北京*昌平'
+}
+}
+
+methods:{
+
+  showDOM(){
+    console.log(this.$refs.title)
+}
+
+}
+
+}
+
+
+</template>
+
+
+Vue获取Dom元素
+
+console.log(this.$refs.title)//真实DOM元素
+console.log(this.$refs.btn)//真实DOM元素
+console.log(this.$refs.sch)//School组件的实例对象
+
+

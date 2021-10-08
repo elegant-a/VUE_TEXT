@@ -1,0 +1,81 @@
+//消息订阅与发布(pubsub)
+1.一种组件间通信的方式,适用于任意组件间通信
+2.使用步骤:
+   1.安装pubsub:npm install pubsub-js
+   2.引入:import pubsub from 'pubsub-js'
+   3.接收数据:A组件想接收数据,则在A组件中订阅消息,订阅的回调留在A组件自身
+      methods(){
+       demo(data){.......}
+}
+......
+mounted(){
+ this.pid = pubsub.subscribe('xxx',this.demo)//订阅消息
+}
+4.提供数据:pubsub.publish('xxx',数据)
+5.最好在beforeDestory钩子中,用PubSub.unsubscribe(pid)去取消订阅
+
+//在Vue中事件总线,就是观察者模式的消息订阅与发布模式
+
+//在引入第三方库的时候,如果是第三方的往上靠,如果是自己写的往下靠
+
+
+
+
+
+
+消息订阅与发布
+         1.订阅消息:消息名
+         2.发布消息:消息内容
+        
+
+
+报纸的订阅与发布
+       1.订阅报纸:住址
+       2.邮递员送报纸:报纸
+
+pubsub.js  subscribe publish (消息的发布与订阅)
+       
+
+npm install -g pubsub-js
+
+
+import pubsub from 'pubsub-js'
+
+School.vue
+
+export default{
+name:'School',
+data(){
+ return{
+  name:'尚硅谷',
+  address:'北京'
+
+}
+}
+mounted(){
+
+this.pubId = pubsub.subscribe('hello',function(msgName,data){
+ console.log('有人发布了hello消息,hello消息的回调执行了'+data)
+})
+}
+
+}
+
+
+Student.vue
+methods:{
+   sendStudentName(){
+   pubsub.publish('hello',666)
+}
+}
+发布消息接收两个参数,一个是msgName,一个是data
+
+beforeDestroy(){
+//this.$bus.$off('hello')
+   pubsub.unsunscribe(this.pubId)
+
+}
+
+
+
+

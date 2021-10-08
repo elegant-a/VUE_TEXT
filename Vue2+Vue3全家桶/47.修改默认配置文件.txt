@@ -1,0 +1,26 @@
+Vue脚手架隐藏了所有webpack相关的配置,若想查看webpack配置,请执行:vue inspect > output.js
+
+public,favicon.ico,index.html,logo不能修改,剩下的都可以更改
+
+webpack是基于node.js的,也就是应用的common.js
+
+
+module.exports = {
+ pages:{
+    index:{
+        //入口
+}
+}
+}
+
+//关闭语法检查
+vue.config.js{
+
+lintOnSave:false//关闭语法检查
+}
+
+makdown的查看工具 Typora !!!!
+
+
+ref 特殊的标签属性
+01_src_分析脚手架

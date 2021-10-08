@@ -1,0 +1,77 @@
+全局事件总线:任意组件间进行通信
+安装全局事件总线:
+Vue.createApp({
+  beforeCreate(){
+    Vue.prototype.$bus = this //安装全局事件总线,$bus就是当前应用的vm
+},
+   .......
+})
+
+3.使用事件总线:
+//兄弟组件A
+   1.接收数据:A组件想接收维护局,则在A组件中给$bus绑定自定义事件,事件的回调留在A组件自身
+      methods(){
+         demo(data){......}
+}
+....
+      mounted(){
+          this.$bus.$on('xxxxx',this.demo)
+}
+//兄弟组件B
+   2.提供数据:this.$bus.$emit('xxxxx',数据)
+
+4.最好在beforeDestroy钩子中,用$off去解绑当前组件所用到的事件.
+
+
+
+
+全局组件APP,APP里面有A,B,D三个组件,B组件里面还有一个C组件
+有一个自定义组件
+在a组件里面写一个自定义事件和自定义函数
+D组件触发x上面的自定义事件
+
+
+在main.js里面添加
+Vue.prototype.x = {a:1,b:2}
+
+父组件给子组件传递数据用的是props,
+子组件给父组件传递数据用的是$emit触发父组件上的方法
+
+
+Vue.prototype.$bus = this
+
+
+
+mounted(){
+ this.$bus.$on('checkTodo',this.checkTodo)
+ this.$bus.$on('deleteTodo',this.deleteTodo)
+},
+beforeDestroy(){
+  this.$bus.$off('checkTodo')
+  this.$bus.$off('deleteTodo')
+
+}
+
+myItem.vue
+
+methods:{
+   //勾选or取消勾选
+   handleCheck(id){
+    //通知App组件将对应的todo对象的done值取反
+    //this.checkTodo(id)
+    this.$bus.$emit('checkTodo',id)
+}
+//删除
+handleDelete(id){
+ if(confirm('确定删除吗?')){
+  //通知App组件将对应的todo对象删除
+  // this.deleteTodo(id)
+  this.$bus.$emit('deleteTodo',id)
+ 
+
+}
+}
+
+
+
+}

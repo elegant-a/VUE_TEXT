@@ -1,0 +1,48 @@
+/*
+  关于不同版本的Vue:
+  1.vue.js与vue.runtime.xxx.js的区别:
+     (1).vue.js是完整版的Vue,包含:核心功能+模板解析器
+     (2).vue.runtime.xxx.js是运行版的Vue，只包含核心功能:没有模板解析器
+ 
+   2.因为vue.runtime.xxx.js没有模板解析器,所以不能使用template配置项,需要使用
+      render函数接收到的createElement函数去指定具体内容
+
+
+/
+
+
+
+1.render
+2.引入完整版的Vue
+
+残缺了模板解析器
+
+引入的是vue.runtime.esm.js
+
+import Vue from 'vue/dist/vue'
+
+引入的时候,引入的就是残缺版的Vue
+
+
+当你引入的是残缺版的Vue就会报错
+
+render(a){
+  console.log(typeof a)
+  return null
+}
+
+Vue :核心 + 模板解析器
+
+
+最终代码解析完了,如果模板解析器存在就不太合理了
+//运行时Vue
+render
+
+
+   买瓷砖(Vue核心) + 雇佣工人(模板解析器) === >铺好的瓷砖
+
+vue.runtime.js//运行时的js
+不引入完整版
+
+
+

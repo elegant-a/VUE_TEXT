@@ -1,0 +1,14 @@
+1.添加 ,提交,推送
+
+1.进入到根目录cd ~
+2.把之前创建的ssh目录删掉.ssh/ rm -r .ssh/
+3.生成ssh目录 ssh-keygen -t rsa -C 你的github邮箱 剩下直接按回车确认就好了
+4.进入到 ssh目录 cd .ssh/(会生成id_rsa和id_rsa.pub)
+5.ll查看当前文件夹下的文件
+6.cat id_rsa.pub 把里面所有的内容复制到用户的ssh和GPG keys里面去
+7.这回我们推送时要用ssh的地址 添加ssh的地址仓库 git remote add origin_ssh @git@github.com:xxxxxxx.git
+
+git push origin_ssh master
+这时不用账密就可以实现ssh的已送操作
+
+

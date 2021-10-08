@@ -1,0 +1,49 @@
+//定义组件
+const s = Vue.extend({
+name:'atguigu',
+template:
+`
+<div>
+    <h2>学校名称:{{name}}</h2>
+    <h2>学校地址:{{address}}</h2>
+</div>
+`,
+data(){
+ return {
+   name:'尚硅谷',
+   address:'北京'
+}
+}
+})
+
+Vue.createApp({
+el:'#root',
+data:{
+ msg:欢迎学习Vue
+}
+
+})
+
+//组件需要注册好了才可以使用
+
+
+
+//定义hello组件
+const hello = Vue.extend({})
+
+//定义app组件
+const app = Vue.extend({
+template:
+`
+components:{
+school,
+hello
+}
+
+`
+components:{
+school,
+hello
+}
+
+})

@@ -1,0 +1,48 @@
+babel.config.js(6 => 5 ES6到ES5的转换工具)
+package.json(包管理工具)
+(npm run serve)//调试工具
+(npm run build)//把.vue文件转化为js文件
+开发的时候语法检查是关闭的
+package-lock.json(包版本控制文件)
+
+
+src目录
+//该文件是整个项目的入口文件 
+main.js
+//引入Vue
+import Vue from 'vue'
+//引入App组件,它是所有组件的父组件
+import App from './App.vue'
+//关闭Vue的生产提示
+
+//创建Vue实例对象---vm
+new Vue({
+//下面这行代码一会解释,完成了这个功能:将App组件放入容器中
+ render:h => h(App),
+}).$mount('#app')
+
+assets是一个静态资源,我们要使用静态资源
+components目录是App的所有子组件
+	
+public目录index.html真个应用的界面
+//针对IE浏览器额特殊配置,含义是让IE浏览器是以最高的渲染级别渲染页面
+
+<---开启移动端理想视口---->
+<!--配置页签图标--->
+<link rel="icon" href="<%= BASE_URL %>favicon.ico">
+//配置网页标题
+<title><%= htmlWebpackPlugin.options.title %></title>
+
+
+<noscript>
+  //浏览器不支持Js里面的内容
+</noscript>
+
+<link rel="icon" href="<%=BASE_URL %>favicon.ico">
+
+
+
+//容器
+<div id="root"></div>
+
+

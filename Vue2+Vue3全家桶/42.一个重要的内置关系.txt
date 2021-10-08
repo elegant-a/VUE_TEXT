@@ -1,0 +1,25 @@
+1.一个重要的内置关系:VueComponent.prototype.__proto__ === Vue.prototype
+2.为什么要有这个关系:让组件实例对象vc可以访问到Vue原型上的属性,方法.
+
+
+VueComponent就是你Vue.extend出来的组件实例
+var example = new extend({
+
+data(){},
+methods:{}
+})
+
+
+example.prototype.__proto__ === Vue.prototype   =>true
+
+Vue是一个大的构造函数,
+可以构造出实例对象vm
+
+
+Vue构造函数->Vue的实例对象vm->Vue的原型对象->Object的原型对象
+VueComponent构造函数->VueComponent的实例对象(vc)->VueComponent的原型对象(__proto__)->Vue的原型对象
+Vue和vm是两个东西
+VueComponent 和 component也是两个东西
+<button @click>
+
+//组件实例对象(vc)可以访问到Vue原型上的属性,方法

@@ -1,0 +1,55 @@
+//插件
+//功能:用于增强Vue
+//本质:包含install方法的一个对象,install的第一个参数是Vue,第二个以后的参数是插件使用者传递的数据.
+定义插件:
+       对象.install = function (Vue,options){
+       //1.添加全局过滤器
+        Vue.filter(....)
+       //2.添加全局指令
+        Vue.directive(...)
+       //3.配置全局混入(合)
+       Vue.mixin(.....)
+       //4.添加实例方法
+       Vue.prototpye.$myMethod = function(){...}
+       Vue.prototype.$myProperty = xxxx
+
+
+}
+
+
+{
+ name:'com'
+ data(){}
+ methods:{},
+ computed:{},
+ watch:{},
+ mixin:['xxxx']
+
+
+}
+
+
+plugins.js
+
+export default{
+ //install会被vue自动调用
+ install(){
+  console.log('@@@instal')
+}
+}
+
+
+//要在main.js里面引入这个插件
+import plugins from './plugins'
+
+//应用(使用)插件
+Vue.use(plugins)
+
+
+//全局过滤器
+Vue.filter('mySlice',function(value){})
+
+
+//给Vue原型上添加一个方法  (vm和vc就都能用了)
+Vue.prototype.hello = ()=>{alert('你好啊')}
+

@@ -1,0 +1,94 @@
+mixin(混入)
+功能:可以把多个组件公用的配置提取成一个混入对象
+使用方式:
+          第一步定义混合,例如:
+            {
+             data(){........}
+             methods:{......}
+             ......
+}
+第二步使用混入,例如
+(1).全局混入:Vue.mixin(xxx)
+(2).局部混入:mixins:['xxx']
+
+mixin是一个单独的对象,当我们使用时,我们要把它定义在一个单独的js文件中
+并利用ES6的模块化进行导出
+
+//混入的优先级,如果被混入的组件和混入的组件都有的数据的话,以被混入的组件的数据为准
+//如果使用的生命周期钩子的话,则两个钩子都会生效
+
+
+
+
+<template>
+<div>
+  <h2 @click="showName">学校名称:{{name}}</h2>
+  <h2>学校地址:{{addresss}}</h2>
+</div>
+
+<script>
+  export default {
+   name:'School',
+   data(){
+    return {
+     name:'尚硅谷',
+     address:'北京'
+}
+},
+methods:{
+  showName(){
+    alert(this.name)
+}
+},
+}
+
+export const mixin = {
+ methods:{
+     showName(){
+      alert(this.name)
+
+}
+}
+}
+
+
+
+
+</script>
+
+
+
+import {mixin} from '../mixin'
+
+
+
+mixins:[hunhe]
+
+
+//混合就是复用配置
+
+
+export const hunhe = {
+methods:{
+ showName(){
+   alert(this.name)
+}
+},
+mounted(){
+ console.log('你好啊')
+
+}
+}
+
+
+export const hunhe2 = {
+data(){
+return{
+x:100,
+y:200
+}
+}
+
+
+
+}
