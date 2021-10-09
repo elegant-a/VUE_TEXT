@@ -1,0 +1,45 @@
+List{1.欢迎2.loading3.users4.error}
+
+List有四种展示
+//展示用户列表
+
+//展示欢迎词
+<h1 v-show="isFirst">欢迎使用!</h1>
+//展示加载中
+<h1 v-show="isLoading">加载中....</h1>
+//展示错误信息
+<h1 v-show="errMsg">{{errMsg}}</h1>
+数据驱动页面的展示
+
+return{
+  isFirst:true,
+  isLoading:false
+  errMsg:'',
+  users:[]
+}
+
+
+this.$bus.$on('updateListData',(dataObj)=>{
+  this.info = {...this.info,...dataobj}
+  console.log(this)
+})
+
+在List.vue里面的生命周期函数中绑定一个updateListData方法
+this.$bus.$on('updateListData',(dataObj)=>{
+
+})
+
+在Search.vue里面触发updateListData的方法,并传输数据
+
+this.$bus.$emit('updateListData',{isFirst:false,isLoading:true,errMsg:'',users:response.data.item
+
+
+error = >{
+  //请求后更新List的数据
+     this.$bus.$emit('updateListData',{isLoading:false,errMsg:error.message,users:[]})
+}
+})
+
+
+
+只要你学会了任意组件间通信的技术,我们就把数据传输给你

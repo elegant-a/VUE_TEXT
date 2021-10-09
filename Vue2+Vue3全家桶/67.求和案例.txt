@@ -1,0 +1,56 @@
+<template>
+<div>
+   <h1>当前求和为:???</h1>
+//select里面的值,双向绑定了v-modle的值
+   <select v-model.number="n">
+        <option value="1">1</option>
+        <option value="2">2</option>
+         <option value="3">3</option>
+    </select>
+    <button @click="increment">+</button>
+     <button @click="decrement">+</button>
+     <button @click="incrementOdd">当前求和为奇数再加</button>
+     <button @click="incrementWait">等一等再加</button>
+</div>
+</template>
+
+
+script
+name:'Count',
+data(){
+ 
+return {
+       n:1,//用户选择数字
+}
+},
+
+methods:{
+
+increment(){
+
+this.$store.dispatch('jia',this.n)
+
+},
+decrement(){},
+incrementOdd(){},
+incrementWait(){
+setTimeout(()=>{},500)
+}
+}
+
+
+const actions = {
+//console.log('actions中的jia被调用了')
+jia(context,value){
+  context.commit('jia',value)
+}
+}
+
+const mutations = {
+ jia(){
+     console.log('mutations中的jia被调用了',a,b)
+}
+}
+
+获取store中的数据
+$store.state.sum

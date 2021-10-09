@@ -1,0 +1,58 @@
+1.常用的AJAX发送请求
+xhr new XMLHttpRequest() xhr.open() xhr.send()
+2.jQuery  $.get $.post 80% 20%
+3.axios
+4.fetch IE浏览器器兼容性稍差
+
+
+Vue的作者推荐用axios发送请求
+
+import axios from 'axios'
+npm install axios(安装axios库)
+
+1.cors(在服务器响应式加一些特殊的响应头)
+2.jsonp script src get post
+3.代理服务器8080 5000 nginx vue-cli可以开发代理服务器 代理服务器的端口号也是8080
+
+开在我本机上的8080
+
+//开启代理服务器
+devServer:{
+proxy:'http://localhost:5000'
+}
+
+
+vue脚手架配置代理
+方法一:
+在vue.config.js中添加如下配置:
+devServer:{
+   proxy:"http://localhost:5000"
+}
+
+说明:
+      1.优点:配置简单,请求资源时直接发给前端8080即可
+      2.不能配置多个代理,不能灵活控制请求是否走代理
+      3.工作方式:若按照上述配置代理,当请求了前端不存在的资源时,那么该请求会转发给服务器(优先配置前端资源)
+
+方法二
+       编写vue.config.js配置具体代理规则:
+module.exports = {
+  devServer:{
+      proxy:{
+           '/api1':{//匹配所有以 '/api'开头的请求路径
+           target:'Http://localhost:5000',//代理目标的基础路径
+           changeOrigin:true,
+           pathRewrite:{'^/api1':''}
+},
+           '/api2':{//匹配所有以 '/api'开头的请求路径
+           target:'Http://localhost:5001',//代理目标的基础路径
+           changeOrigin:true,
+           pathRewrite:{'^/api1':''}
+},
+}
+}
+}
+
+
+
+

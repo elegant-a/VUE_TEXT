@@ -1,0 +1,39 @@
+6.四个map方法的使用
+1)mapState方法:用于帮我们映射state中的数据为计算属性
+//借住mapState生成计算属性:sum,school,subject(对象写法)
+...mapState({sum:'sum',school:'school',subject:'subject'})
+//借住mapState生成计算属性:sum,school,subject(数组写法)
+...mapState(['sum','school','subject'])
+
+
+
+1)mapGetters方法:用于帮我们映射getters中的数据为计算属性
+//借住mapGetters生成计算属性:sum,school,subject(对象写法)
+...mapState({bigSum:'bigSum'})
+//借住mapGetters生成计算属性:sum,school,subject(数组写法)
+...mapState(['bigSum'])
+
+
+
+import {mapState} from 'vuex'
+
+
+computed:{
+//靠程序员自己写计算属性
+    sum(){
+     return this.$store.state.sum
+},
+    school(){
+    return this.$store.state.school
+},
+    subject(){
+    return this.$store.state.subject
+}
+
+//借住mapState生成计算属性，从state中读取数据(对象写法 )
+...mapState({he:'sum',xuexiao:'school',xueke:'subject'})
+
+//借住mapState生成计算属性，从state中读取数据(数组写法)
+...mapState(['sum','school','subject'])
+
+}

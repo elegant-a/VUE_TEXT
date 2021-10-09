@@ -1,0 +1,83 @@
+多组件共享数据
+准备两个组件,一个组件时Count,一个组件时Person
+Count.vue,Person.vue
+
+const state = {
+sum:0,//当前的和
+school:'尚硅谷',
+subject:'前端',
+personList:[
+{id:'001',name:'张三'}
+]
+}
+
+<li v-for="p in $store.state.personList" :key="p.id">{{p.name}}</li>
+
+
+
+
+computed:{
+  personList(){
+   return this.$store.state.personList
+}
+}
+
+
+v-model="name"
+import {nanoid} from 'nanoid'
+
+methods:{
+add(){
+  const personObj = {id:nanoid(),name=this.name}
+  console.log(personObj)
+  this.name = ''
+
+}
+
+}
+
+
+
+
+//使用nanoid
+
+npm install nanoid
+
+import {nanoid} from 'nanoid'
+
+
+
+Vuex使用方法
+
+index里面配置
+state里面配置的是数据
+
+export default createStore({
+    state:{
+
+
+}
+},//里面配置的是要使用的数据
+    mutations:{
+//mutations里面是被调用的数据
+被调用的数据接收两个参数
+一个是存储的数据,一个是传递过来的值
+
+
+}//这里面是要操作的数据
+    actions:{
+   jia()
+
+}//这里面是被分发的数据
+    modules:{}
+})
+
+
+$store.state.xxx
+
+
+
+//组件中需要使用的数据
+this.$store.dispatch('jia',this.n)
+
+

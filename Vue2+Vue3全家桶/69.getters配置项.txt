@@ -1,0 +1,39 @@
+_getters配置项
+getters的使用
+1.概念:当state中的数据需要经过加工后再使用时,可以使用getters加工.
+2.在store.js中追加gettes配置
+
+const getters ={
+bigSum(state){
+ return state.sum * 10
+}
+}
+
+//创建并暴露store
+export default new Vuex.Store({
+.....
+getters
+})
+
+
+3.在组件中读取数据$store.getters.bigSum
+
+
+
+
+
+
+
+当前求和放大10倍后
+
+{{$store.state.sum*10}}
+
+
+computed:{
+ dahe(){
+   return this.$store.state.sum * 10;
+}
+}
+
+//计算属性只适用于当前组件
+

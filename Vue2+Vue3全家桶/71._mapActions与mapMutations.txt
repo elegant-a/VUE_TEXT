@@ -1,0 +1,31 @@
+_mapActions与mapMutations
+
+//借住mapMutations生成对应的方法,方法中会调用commit去联系mutations(对象写法)
+...mapMutations({increment:'JIA',decrement:'JIAN'})
+//借住mapMutations省队对应的方法，方法中会调用commit去联系mutations(数组写法)
+...mapMutations({increment:'JIA',decrement:'JIAN'})
+
+
+mutations里面只有加和减
+
+import {mapState,mapGetters,mapMutations ,mapActions} from 'vuex'
+
+export default{
+  name:'Count',
+  data(){
+   return {
+    n:1;//用户选择的数字
+}
+}
+}
+
+
+
+3.mapActions方法:用于帮助我们生成与actions对话的方法,即:包含$store.dispatch(xxx)的函数
+
+methods:{
+    //靠mapActions生成:incrementOdd,incrementWait(对象形式)
+  ...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
+}
+//靠mapActions生成:incrementOdd,incrementWait(数组形式)
+...mapActions(['jiaOdd','jiaWait'])

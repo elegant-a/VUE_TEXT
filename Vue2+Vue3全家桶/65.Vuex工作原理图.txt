@@ -1,0 +1,9 @@
+Vue Component Dispatch  ->Actions ->Commit ->Mutations->Mutate->State
+->Render->Vue Components
+
+
+Actions 和 Mutations 和 State这三个对象都需要通过 Store来管理
+
+store.dispatch
+store.commit
+1.Actions,Mutations,State

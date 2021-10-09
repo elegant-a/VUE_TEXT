@@ -1,0 +1,38 @@
+1.路由就是一组key-value的对应关系
+2.多个路由,需要经过路由器的管理
+
+SPA应用
+
+index.html
+user.html
+category.html
+order.html
+
+点击之后会引起路径的变化
+
+route规则:class=>班级组件
+                 key       value
+//路径对应着组件
+
+
+6.1相关理解
+6.1.1 vue-router 的理解
+         vue的一个插件库,专门用来实现SPA应用
+6.1.2对SPA应用的理解
+1.单页Web应用(single page web application,SPA).
+2.整个应用只有一个完整的页面
+3.点击页面中的导航链接不会刷新页面,只会做页面的局部更新
+4.数据需要通过ajax请求获取
+
+6.1.3路由的理解
+1.什么是路由?
+   1.路由就是一组映射关系(key-value)
+   2.key为路径,value可能是function或component
+ 2.路由分类
+   1.后端路由:
+      1)理解:value是function,用于处理客户端提交的请求
+      2)工作过程:服务器接收到一个请求时,根据请求路径找到匹配的函数来
+         处理请求,返回相应数据.
+     2.前端路由:
+      1)理解:value是component,用于展示页面内容
+      2)工作过程:但浏览器路径改变是,对应的组件就会显示
