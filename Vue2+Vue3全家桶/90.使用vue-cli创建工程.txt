@@ -1,0 +1,23 @@
+查看电脑Vue版本
+
+
+1.使用vue-cli创建
+
+vue --version
+安装或升级你的@vue/cli
+
+npm install -g @vue/cli
+
+//创建
+vue create vue_test
+
+
+
+vue -V
+
+
+创建Vue项目
+
+vue create vue3_test
+
+我们只是用VueCli初始化工程

@@ -1,0 +1,51 @@
+ref函数_处理基本类型
+
+从vue里面引入ref
+import { ref } from 'vue'
+
+RefImpl
+
+reference  implement
+引用          实现
+
+引用实现的实例对象
+Vue就是使用Object.defineproperty()
+//配合着getter和setter完成的响应式
+
+vue3里面也是通过 ref中的getter和setter完成的响应式
+
+
+
+
+
+<input ref="qwe"  .../>
+类似原生JS的继承者
+<button @click="changeInfo">修改人的信息</button>
+
+export default {
+   name:'App',
+   setup(){
+
+   //数据
+   let name = ref('张三')
+   let age = ref(18)
+   //方法
+   function changeInfo(){
+   name = '李四'
+   age = 48
+}
+
+//返回一个对象(常用)
+
+return {
+
+name,
+age,
+changeInfo
+}
+
+}
+}
+
+//setup中 ref将基本数据类型转换为个对象，在逻辑结构中,需要调用ref对象的.value才可以修改.value的值
+而在模板字符串中，则不需要调用.value的值

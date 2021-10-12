@@ -1,0 +1,38 @@
+Q:$route和$router的区别
+
+
+<button @click="pushShow">
+
+
+methods:{
+     pushShow(){
+       console.log(this.$router)
+}
+}
+
+
+$route是路由
+$router是路由器
+
+1.作用:不借助<router-link>实现路由跳转,让路由跳转更加灵活
+2.具体编码:
+//$router两个API
+   this.$router.push({
+       name:'xiangqing',
+       params:{
+                  id:xxx,
+                  title:xxx
+}
+})
+
+this.$router.replace({
+  name:'xiangqing',
+  params:{
+     id:xxx,
+     title:xxx
+}
+})
+
+ this.$router.forward()//前进
+ this.$router.back()//后退
+ this.$router.go(3)//可前进也可后退

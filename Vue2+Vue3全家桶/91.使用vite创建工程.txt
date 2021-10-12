@@ -1,0 +1,22 @@
+2.使用vite创建vue3的工程
+
+
+什么事vite?新一代的前端构建工具
+优势如下:
+      在开发环境中,无需打包操作,可快速冷启动
+      轻量快速的热更新(HMR）
+      真正的按需编译不再等待整个应用编译完成
+
+现在这一代都依赖于webpack
+
+
+grunt gulp webpack
+
+##创建工程
+npm init vite-app <project-name>
+##进入工程目录
+cd <project-name>
+##安装依赖
+npm install
+##运行
+npm run dev

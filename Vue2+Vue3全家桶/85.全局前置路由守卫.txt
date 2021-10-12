@@ -1,0 +1,47 @@
+//全局前置路由守卫 ----每次路由切换之前被调用
+router.beforeEach((to,from,next)=>{
+   console.log('@')
+})
+
+
+to,from,next
+to:要去哪
+from:从哪里来
+
+
+路由守卫记得调用next()
+
+判断下什么时候放行
+if(localStorage.getItem('school')==='atguigu'){
+next()
+
+
+}
+
+
+router.beforeEach((to,from,next)=>{
+
+console.log('前置路由守卫',to,from)
+if(to.meta.isAuth){
+判断是否需要鉴权
+if(localStorage.getItem('school')==='atguigu'){
+
+next()
+}else{
+
+alert('学校名不对,无权限查看')
+}else{
+
+next()
+}
+
+
+//全局后置路由守卫----初始化的时候被调用,每次路由切换之后被调用
+router.afterEach((to,from,next)=>{
+  console.log('后置路由守卫',to,from,next)
+})
+
+
+}
+
+})

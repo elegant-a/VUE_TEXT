@@ -1,0 +1,47 @@
+//两个新的生命周期钩子
+1.作用:路由组件所独有的两个钩子,用于捕获路由组件的激活状态
+2.具体名字:
+ 1)activated路由组件被激活时触发
+ 2)deactivated路由组件失活时触发
+
+
+//激活的
+activated(){},
+//失活的
+deactivated(){}
+
+
+
+activated(){
+   console.log('News组件被激活了')
+   this.timer = setInterval(()=>{
+    console.log('@')
+    this.opacity -= 0.01
+    if(this.opacity <= 0) this.opacity = 1
+},16)
+},
+
+
+deactivated(){
+ console.log('News组件失活了')
+ clearInterval(this.timer)
+}
+
+
+
+const router = new VueRouter({
+routes:[
+{
+  name:'guanyu',
+  path:'/about',
+  compoent:About
+},
+{
+  name:'zhuye',
+  path:'/home',
+  compoent:Home
+  children:[....]
+}
+]
+})
+

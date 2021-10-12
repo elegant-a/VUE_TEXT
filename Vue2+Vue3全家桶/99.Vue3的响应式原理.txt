@@ -1,0 +1,122 @@
+Vue3.0的响应式 响应式(数据代理)
+实现原理:
+      通过Proxy(代理):拦截对象中任意属性变化,包括:属性值的读写,属性的添加,属性的删除等
+      通过Reflect(反射):对被代理对象(源对象)的属性进行操作
+
+
+MDN的proxy和Reflect文档
+
+new Proxy(data,{
+//拦截读取属性值
+get (target,prop){
+
+   return Reflect.get(target,prop)
+},
+//拦截设置属性或添加新属性
+set(target,prop,value){
+
+return Reflect.set(target,prop,value)
+},
+//拦截删除属性
+deleteProperty(target,prop){
+    return Reflect.deleteProperty(target,prop)
+}
+})
+
+
+proxy.name = 'tom'
+
+
+setup(){
+//数据
+let person = reactive({...})
+
+
+//方法
+function changeInfo(){...
+
+}
+function addSex(){
+
+person.sex = '男'
+
+}
+
+function deleteName(){
+delete person.name
+}
+
+}
+
+
+
+
+//源数据
+let person = {
+ name:'张三',
+ age:18
+}
+
+
+//模拟Vue2中实现响应式
+let p = {}
+Object.defineProperty('p','name',{
+get(){//有人读取name时调用}
+   return person.name
+},
+set(value){//有人修改name时调用
+
+person.name = value 
+}
+)
+
+
+
+Object.defineProperty(p,'age',{
+get(){
+//有人读取age时调用
+ return person.age
+},
+set(value){
+//有人修改age时调用
+console.log('有人修改了age属性,我发现了,我要去更新界面!')
+person.age = value
+//Vue2直接添加是一个死数据
+}
+})
+
+Vue2响应式遍历的时候,就是通过
+Object.defineProperty()//定义一个变量,来进行响应式数据操作的
+
+
+//Vue3中的响应式
+//和Object.definePropery(p,'age',{})是一个效果
+//Vue3中的数据代理
+const p = new Proxy(person,{
+//有人读取p的某个属性时调用
+get(target,propName){
+  console.log(`有人读取了p身上的${prop}属性`)
+  return target[propName]
+}
+//有人修改了p的某个属性,或给p追加某个属性时调用
+set(target,propName,value){
+
+ console.log(`有人修改了p身上的${propName}属性,我要去更新界面了!`)
+ target[propName] = value
+},
+//有人删除p的某个属性时调用
+deleteProperty(target,propName){
+  console.log(`有人删除了p身上的${propName}属性,我要去更新页面了`)
+  return delete target[propName]
+
+}
+})
+
+
+new Proxy中的(person,{}) person是被代理的参数
+p是代理对象
+
+get,set和deleteProperty中的参数,(target,propName,value)
+
+target是代理的对象,propName是代理的属性,value是在修改值的时候,传入的数值s
+target[propName] = value

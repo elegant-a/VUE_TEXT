@@ -1,0 +1,44 @@
+13.路由器的两种工作模式
+
+1.对于一个url来说,什么事hash值?-----#及其后面的内容就是hash值
+2.hash值不会包含在HTTP请求中,即:hash值不会带给服务器.
+3.hash模式:
+  1)地址中永远带着#号,不美观
+  2)若以后将地址通过第三方手机app分享,若app校验严格,则地址会被标记为不合法
+  3)兼容性较好
+4.history模式
+  1)地址干净,美观
+  2)兼容性和hash模式相比略差
+  3)应用部署上线时需要后端人员的支持,解决善心页面服务端404的问题
+
+
+
+
+
+npm run build
+
+dist目录 就是我们开发环境的代码
+
+build生成的代码要放在服务器上部署,才可以运行
+
+npm init
+
+npm i express
+
+const express = require('express')
+
+const app = express()
+
+app.get('/person',(req,res)=>{
+  res.send({
+     name:'tom',
+     age:18
+})
+
+
+app.use(express.static(__dirname+'/static'))
+npm install connect-history-api-fallback
+})
+
+
+npm install connect-history-api-fallback前端路径更改,后端通过这个插件更改

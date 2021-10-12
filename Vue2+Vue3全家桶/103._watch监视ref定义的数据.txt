@@ -1,0 +1,82 @@
+watch:{
+//监测sum的值,接收的两个参数一个为新值，一个为旧值
+sum(newValue,oldValue){
+  console.log('sum的值变化了',newValue,oldValue)
+
+}
+}
+
+
+watch:{
+
+sum:{
+ deep:true
+handler(newValue,oldValue){
+
+console.log('sum的hi变化了')
+
+}
+
+}
+
+
+
+Vue3的watch变成了一个组合式的API
+
+import {watch} from 'vue'
+
+setup(){
+
+//情况1:监视ref所定义的响应式数据
+watch(sum,(newValue,oldValue)=>{
+console.log('sum变了',newValue,oldValue)
+})
+
+//情况2:监视ref所定义的多个响应式数据
+watch([sum,msg],(newValue,oldValue)=>{
+
+console.log('sum变了',newValue,oldValue)
+
+})
+
+在一般的生产中,我们使用watch(person,(newValue,oldValue)=>{
+
+console.log('person变化了',newValue,oldValue)
+
+},{deep:false})
+
+watch(sum,(newValue,oldValue)=>{
+console.log('sum变了',newValue,oldValue)
+},{immediate:true,deep:true})
+}
+}
+
+
+//情况三:监视reactive所定义的一个响应式数据,注意:
+  1.此处无法正确的获取oldValue
+  2.注意:强制开启了深度监视(deep配置无效)
+   watch(person.value,(newValue,oldValue)=>{
+   console.log('person变化了',newValue,oldValue)
+})
+
+情况四:监视reactive所定义的一个响应式数据中的某个属性
+
+watch(()=>person.name,(newValue,oldValue)=>{
+
+console.log('person的name变化了',newValue,oldValue)
+})
+
+//情况五:监视reactive所定义的一个响应式数据中的某些属性
+
+watch([()=>person.name,()=>person.age],(newValue,oldValue)=>{
+
+console.log('person的name或age变化了',newValue,oldValue)
+
+})
+
+2.watch函数
+与Vue2.x中watch配置功能一致
+两个小"坑":
+    监视reactvie定义的响应式数据时,oldValue无法正确获取,强制开启了深度监视(deep配置失效)
+    监视reactive定义的响应式数据中某个属性时:deep配置有效 
+

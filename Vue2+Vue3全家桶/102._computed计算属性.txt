@@ -1,0 +1,80 @@
+computed计算属性
+与Vue2.x中computed配置功能一致
+写法
+
+import { computed } from 'vue'
+
+setup{
+...
+//计算属性---简写 (简写形式,只考虑读取,没有考虑修改)
+let fullName = computed(()=>{
+
+return person.firstName + '-' + person.lastName
+})
+//计算属性-完整
+let fullName = computed({
+   get(){
+     return person.firestName + '-' + person.lastName
+},
+  set(value){
+       const nameArr = value.split('-')
+          person.firstName = nameArr[0]
+          person.lastName = nameArr[1]
+
+
+}
+
+
+
+})
+
+
+
+}
+
+
+
+
+
+import {reactive,computed } from 'vue'
+
+姓:<input type="text" v-model="person.firstName">
+名:<input type="text" v-model="person.lastName">
+ <span>{{fullName}}</span>
+export default{
+  name:'Demo',
+  setup(){
+    //数据
+  let person = reactive({
+  firstName:'张'
+  lastName:'三'
+})
+
+返回一个对象
+return {
+
+person
+
+}
+
+}
+}
+
+
+Vue2写法
+computed:{
+fullName(){
+
+return this.person.firstName + '-' + this.person.lastName
+}
+
+
+Vue3写法
+let fullName = computed(()=>{
+
+return person.firstName + '-' + person.lastName
+
+})
+
+
+}

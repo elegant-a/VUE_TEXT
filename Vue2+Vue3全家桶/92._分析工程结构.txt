@@ -1,0 +1,39 @@
+//引入的不再是Vue构造函数了,引入的是一个名为createApp的工厂函数
+
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App),mount('#app')
+
+
+new Vue({
+
+ render:h = > h(App)
+
+
+}).$mount('#app')
+
+
+const vm = new Vue({
+
+render:h => h(App)
+
+})
+
+vm.$mount('#app')*/
+
+
+vue.createApp({})
+
+Vue应用中包含的属性
+
+
+compoent:组件
+directive:自定义指令
+mixin:混入
+mount:挂载
+unmount:卸载
+
+
+//vue3中的组件模板结构可以没有根标签
+
